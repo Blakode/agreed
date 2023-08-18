@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import './index.css';
+import { BrowserRouter as Router ,Route,  Switch,} from 'react-router-dom';
+import Navbar from './Navbar';
+import Home from './Home';
+import Registration from './Registration';
+import PageNotFound from './PageNotFound';
+import CreatePDF from './CreatePDF';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='container bg-slate-100'>
+              <section className=''>
+                  <div className=''>
+                      <div className='py-4'>
+                        <Navbar/>
+                      </div>
+                     <Switch>
+                        <Route exact path='/'><Home /> </Route> 
+                        <Route path='/register'><Registration/> </Route>
+                        <Route path='/generate'><CreatePDF /></Route>
+                        <Route path='*'><PageNotFound/> </Route>
+                      </Switch>
+              </div>
+              </section>
+      </div>
+    </Router>
+
+
   );
 }
 
